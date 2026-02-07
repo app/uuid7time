@@ -1,15 +1,19 @@
 # uuid7time
 
-Fast, minimalist CLI tool for extracting timestamps from UUID version 7.
+**Fast, static binary** for extracting timestamps from UUID version 7.
+
+**1.2 MB · No dependencies · Cross-platform**
 
 UUID v7 embeds a 48-bit timestamp (milliseconds since Unix epoch) in its first 6 bytes. This tool extracts and formats it for human and machine consumption.
 
 ## Features
 
+- **🚀 Static binary**: 1.2 MB standalone executable, no runtime dependencies
+- **⚡ Built with Rust**: Memory-safe, zero-cost abstractions, blazing fast
+- **📦 Cross-platform**: Linux (x86_64, ARM64), macOS Apple Silicon
 - **Multiple output formats**: ISO 8601, Unix timestamp (seconds/milliseconds), JSON
 - **Batch processing**: Handle multiple UUIDs via stdin or arguments
 - **Pipeline-friendly**: Clean output, proper error handling, exit codes
-- **Static binary**: Single 1.2 MB executable, no dependencies
 - **Fast**: Direct byte manipulation, minimal allocations
 
 ## Installation
@@ -18,8 +22,23 @@ UUID v7 embeds a 48-bit timestamp (milliseconds since Unix epoch) in its first 6
 
 Download the latest static binary from [Releases](https://github.com/app/uuid7time/releases):
 
+**Linux x86_64**:
 ```bash
-curl -L https://github.com/app/uuid7time/releases/latest/download/uuid7time -o uuid7time
+curl -L https://github.com/app/uuid7time/releases/latest/download/uuid7time-linux-x86_64 -o uuid7time
+chmod +x uuid7time
+sudo mv uuid7time /usr/local/bin/
+```
+
+**Linux ARM64**:
+```bash
+curl -L https://github.com/app/uuid7time/releases/latest/download/uuid7time-linux-aarch64 -o uuid7time
+chmod +x uuid7time
+sudo mv uuid7time /usr/local/bin/
+```
+
+**macOS Apple Silicon**:
+```bash
+curl -L https://github.com/app/uuid7time/releases/latest/download/uuid7time-macos-arm64 -o uuid7time
 chmod +x uuid7time
 sudo mv uuid7time /usr/local/bin/
 ```
@@ -134,13 +153,18 @@ Options:
 - **Language**: Rust
 - **Dependencies**: uuid, chrono, clap, serde/serde_json
 - **Binary size**: ~1.2 MB (static, musl-linked)
-- **Platform**: Linux x86_64 (static binary, no runtime dependencies)
+- **Platforms**: 
+  - Linux x86_64 (static binary, musl)
+  - Linux ARM64/aarch64 (static binary, musl)
+  - macOS Apple Silicon (ARM64)
 
 See [AGENTS.md](AGENTS.md) for detailed implementation documentation.
 
 ## License
 
-MIT
+Apache 2.0
+
+See [LICENSE](LICENSE) for details.
 
 ## Contributing
 
